@@ -288,3 +288,62 @@ Dollar figures are estimates; the list price of the serving model is noted where
 
 **Spend**
 - Tracker: TOTAL        123    554434    2818642    12871170    3316    97.00    87.35 budget $240: 40% used (high estimate), 36% (low estimate)  Four threads still running.
+
+## 2026-11-05 01:50 UTC. Wave 1, threads 6 and 7 back: Common Crawl versus commercial; own-index providers
+
+**Done**
+- Committed `common_crawl_vs_commercial.md` and `providers_own_index.md` (412 lines, 19 sections, a 27-row
+  comparison table).
+
+**Found: Common Crawl versus a commercial index**
+- Scale in 2026: the October crawl (CC-MAIN-2026-43) holds 2.16B pages, 371 TiB uncompressed, 41.4M hosts, with
+  about 38% never-before-seen URLs; the per-crawl size fell about 29% from 3.03B pages in early 2025 to about
+  2.15B in 2026 (cause unidentified). Cumulative archive over 300B pages; English is 42.6% of pages.
+- Selection mechanics (Mozilla's 2024 interviews with Common Crawl staff): a CrawlDB of about 25B URLs, domains
+  ranked by harmonic centrality (chosen over PageRank for spam resistance), a per-domain budget scaled by
+  centrality, a fixed per-crawl cap ("if we 10x that, quality would drop"), about half of each crawl revisits,
+  "samples of samples, never whole sites", politeness that leaves highly ranked domains under-represented, no
+  JavaScript, no cookies, no paywalls.
+- What it lacks: only URL-lookup indexes (the rate-limited CDXJ server and a Parquet URL index), no inverted index,
+  no embeddings, no ranking signals beyond host-level centrality, no snippets, no rendering, no sub-second
+  serving. Measured provider latencies (Perplexity, September 2025): Perplexity p50 358 ms, Brave 513, Tavily
+  1,342, Exa 1,375.
+- Building search on it: Elastic ChatNoir (2018) indexed 1.6B pages on 124 Elasticsearch data nodes, 9.7 TB index
+  plus 28.8 TB document store, 115.6 TB on disk at 3x replication, about 600 ms warm queries; a 2018 tantivy
+  experiment built a 13 TB BM25 index over 3.2B pages for under $50 of compute but about $400 a month of S3. Stract
+  used Common Crawl only to bootstrap, then its own crawler (repository archived 2026-04-02). Marginalia runs its
+  own crawl on one server at about $200 a month. The EU's Open Web Index project (€8.5M, ended 2026-02-28) argues a
+  focused own crawl is cheaper than indexing a Common Crawl-sized collection and crawls over 30M pages a day.
+  Common Crawl's real downstream success is LLM corpora (FineWeb 15T tokens, RefinedWeb, DCLM).
+- Commercial sizes: Google "hundreds of billions" of pages; Brave 30B+ pages with 100M+ updates a day (vendor);
+  Mojeek 9B+; Exa 80B to 100B documents and 1.4T URLs tracked (vendor; the CEO concedes figures are not
+  comparable); Keenable 100B+; Perplexity over 200B URLs tracked. No official Bing or Yandex totals.
+- CCBot blocking: 26% of the top 1,000 sites have CCBot robots rules (2026-11-04); 37.4% of 107 prominent
+  publishers block it (June 2026), including NYT, BBC, Guardian, Amazon, LinkedIn; CCBot is second only to
+  Bytespider on block-to-allow ratio in Cloudflare Radar (September 2026). No evidence that Exa, Keenable,
+  Brave, Mojeek or Perplexity use Common Crawl; all say they run their own crawlers.
+
+**Found: own-index providers**
+- Confirmed own crawler and index (crawler named): Brave (30B+ pages; $5 per 1K; LLM Context endpoint launched
+  2026-02-12 with p90 under 500 ms; official MCP), Mojeek (9B pages; £2 to £3 per 1K; EU-only infrastructure),
+  Perplexity (PerplexityBot; over 200B URLs; Search API launched 2025-09-25 at $5 per 1K, $1 fast; vendor p50
+  358 ms, p95 763 ms; vendor SimpleQA 0.930; official MCP), Yep by Ahrefs (100B pages, 8B crawled a day; $4 per
+  1K with 20 results), Valyu (HenkBot; about $0.63 per 1K results), Yandex, Marginalia (about 300M documents),
+  Stract, Mwmbl ($5 per 1K, under 200 ms), Kagi (Teclis and TinyGem indexes at $2 per 1K; the full Search API
+  at $12 per 1K blends all major providers plus Marginalia).
+- Own index claimed, crawler and size undisclosed: Parallel ("billions of pages, millions updated daily"; turbo
+  and fast $1 per 1K at about 200 and 700 ms, basic and advanced $5 per 1K at about 1 and 3 s), Linkup ("our
+  index" plus premium data partners; $5 standard, $50 deep per 1K), EUSP Staan (Qwant and Ecosia joint venture;
+  €2 per 1K; p95 under 800 ms), Octen (launched 2026-04-22, $10M seed; "indexed within 5 minutes", 62 ms p50,
+  $1 per 1K; Artificial Analysis 77 at the lowest cost and time; invite-only).
+- Evidence points to third-party aggregation: Tavily (Sacra: "does not maintain its own search index";
+  Perplexity labelled it SERP-based; Tavily says "agent-native index" plus caching), Jina s.jina.ai, Nimble
+  (scrapes "major search engines" with a proprietary cache), You.com (bills only live crawls; no size or
+  crawler), Firecrawl /search (web engine unnamed; own vertical indexes of 113M+ sources).
+
+**Gaps for wave 2**
+- Artificial Analysis scores for Tavily, Linkup, Valyu, Kagi, Mojeek; Brave's circulating 40B figure has no
+  primary source; official MCP status for Linkup, Valyu, Firecrawl; Octen's background; Yandex and Bing sizes.
+
+**Spend**
+- Tracker: TOTAL        124    557093    2827173    13070108    3318    97.50    87.70 budget $240: 41% used (high estimate), 37% (low estimate)  Two threads still running (head-to-head results, MCP ecosystem).
