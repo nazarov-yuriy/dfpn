@@ -240,3 +240,51 @@ Dollar figures are estimates; the list price of the serving model is noted where
 
 **Spend**
 - Tracker: TOTAL        120    547816    2645463    12422520    3250    92.76    83.44 budget $240: 39% used (high estimate), 35% (low estimate)  Five threads still running.
+
+## 2026-11-05 01:40 UTC. Wave 1, thread 5 back: market positioning and UVP
+
+**Done**
+- Committed `uvp_and_market.md` (verbatim homepage positioning for 13+ vendors, funding, practitioner sentiment
+  from HN threads fetched directly, market analysis).
+
+**Found**
+- Funding and traction: Exa $250M Series C at $2.2B (a16z, 2026-05-20), claims $100M annualized revenue and 2B
+  requests a month (Sacra: about $14M ARR end-2025, about $100M September 2026). Parallel $100M Series A at $740M
+  (November 2025), $100M Series B at $2B (Sequoia, 2026-04-29). Tavily $20M Series A (Insight, August 2025), then
+  acquired by Nebius for about $275M (Bloomberg, announced 2026-02-10), claims 3M+ developers and 300M+ monthly
+  requests. Keenable $26M seed (2026-08-25). You.com $100M Series C at $1.5B (September 2025), 1B+ API queries a
+  month, customers DuckDuckGo, Windsurf, Harvey. Firecrawl $75M Series B (2026-09-22). Jina acquired by Elastic
+  (2025-10-09). Linkup $10M seed (February 2026). New entrants: Octen ($10M, April 2026), DeepSeek search API at
+  $0.75 per 1K (October 2026), Cloudflare Web Search API reselling Exa, Linkup and Ceramic at no markup
+  (2026-10-02). Brave removed its free tier in February 2026 and is a confirmed Anthropic subprocessor. Kagi API
+  $12 per 1K; Mojeek £2 to £3 per 1K.
+- Positioning shifts: Tavily no longer calls itself "the search engine for agents" but a "web access layer";
+  Linkup dropped "licensed premium content" from its homepage for "industry-leading accuracy, deploy in your own
+  cloud"; Brave says "index size is a vanity stat"; Keenable, Parallel and Exa all explicitly claim their own
+  index. $5 per 1K is the anchor price, with $1 and sub-$1 tiers appearing in 2026.
+- Practitioner sentiment (HN): Exa is the quality reference (competitors call it "the market leader") but
+  criticized for price, per-result add-ons and zero-data-retention as a paid feature; Brave is the pragmatic
+  default but resented for the free-tier removal; vendor benchmarks are widely distrusted ("reward hacking"); an
+  explicit race-to-the-bottom debate followed DeepSeek's launch.
+- Market structure: Bing API retired 2025-08-11 and Google's Custom Search JSON API closes 2027-01-01, while
+  Google routes third-party grounding to Exa (private preview, April 2026) and Parallel. Cloudflare moved from
+  default-blocking AI crawlers (2025-07-01) to accusing Perplexity of stealth crawling (2025-08-04) to default
+  blocking of AI agents and mixed-use crawlers on ad-supported pages with "Pay Per Use" (2026-09-15). Google sued
+  SerpApi under the DMCA on 2025-12-19 (motion to dismiss 2026-02-20). a16z's "Search Wars" (November 2025):
+  a multi-winner market competing on speed, pricing and ease of integration, with deep research the most
+  monetizable layer.
+- Where differentiation really is: leaderboards flip monthly (Artificial Analysis: Perplexity top in September
+  2026, Exa 3.0 top in October 2026; Vals: Exa first in July 2026, Keenable first in October 2026 by 0.63 points,
+  "not established as statistically significant"). Vals shows search itself moves accuracy from 3% to 7% to 30% to
+  50%, and about 95% of per-task cost is model tokens, so queries per task (Exa 7.6, Brave 12.4, Firecrawl 15.4)
+  and extraction quality matter more than the headline price per 1K. An own index drives price floors, storage
+  rights and legal insulation rather than accuracy: aggregator Tavily matches own-index vendors on SimpleQA in
+  Parallel's own tables.
+
+**Gaps for wave 2**
+- Reddit threads (budget exhausted), named engineers' posts, Linkup's current SimpleQA score and publisher list,
+  Google's 2026-01-20 announcement body, SerpApi case status after February 2026, the Artificial Analysis primary
+  page (404 for this thread; figures were vendor-relayed).
+
+**Spend**
+- Tracker: TOTAL        123    554434    2818642    12871170    3316    97.00    87.35 budget $240: 40% used (high estimate), 36% (low estimate)  Four threads still running.
