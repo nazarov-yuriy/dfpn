@@ -354,3 +354,48 @@ Dollar figures are estimates; the list price of the serving model is noted where
   and $20 for 1-hour cache writes, $0.25 for cache reads, and $50 per million output tokens. The tracker's
   "official" column is therefore the right estimate; the earlier high column ($1 cache reads) is kept only as a
   conservative upper bound. Every previous entry's lower figure is the one to read.
+
+## 2026-11-05 02:05 UTC. Wave 1, thread 8 back: published head-to-head results
+
+**Done**
+- Committed `head_to_head_results.md` (about 98 KB, 89 unique sources; every number dated and labelled vendor or
+  independent, with harness and reproducibility notes).
+
+**Found**
+- Parallel's series is four distinct runs, not one. (a) July 10 to 12, 2026: GPT-5.4 agent and judge, 20 tool
+  calls, all 1,266 BrowseComp questions, "best observed across sessions": Parallel Turbo 51% BrowseComp, 91%
+  SimpleQA; Exa Instant 33.7% and 89.3%; Tavily Ultra Fast 19.3%; SerpApi 23.3% and 76.7%; OpenAI web search
+  57.7% BrowseComp (so the figure flagged earlier does exist on a live page). The Brave 38.3% figure appears only
+  in a search snippet, not on any live Parallel page. (b) 2026-08-26 Task API run (n=100): Parallel Ultra4x 94%,
+  Perplexity high 86%, Exa Agent Max 78%. (c) 2026-09-09 Search API run: GPT-5.6 Sol high and Luna low, n=50
+  BrowseComp, n=100 SimpleQA Verified, n=100 WideSearch, unnamed judge: Parallel Advanced 74% at $399 per 1K,
+  Perplexity 74% at $275, Exa Auto 70% at $971, Tavily 66% at $935; SimpleQA Verified 91% to 97% for every
+  product. (d) October 2026 finance runs on GPT-6 Sol. Between July and September Parallel changed the agent,
+  the sample (1,266 to 50), the judge, best-of reporting and the competitor tiers (fastest modes to default),
+  and publishes no judge prompt, sample IDs, variance or code.
+- Artificial Analysis Search Index, complete tables. Launch 2026-08-18 (11 configurations, 7 providers): Parallel
+  advanced 75, Exa auto 74, Firecrawl 73, Parallel basic 73, Exa fast 68, You.com 68, Parallel turbo 67, Keenable
+  pro 67, Keenable realtime 67, Tavily basic 66, Brave 65. As of 2026-10-19: Exa auto 80, Perplexity medium 80,
+  Exa lite 79, Perplexity high 79, Octen 77, Parallel advanced 75, Brave LLM context 75, OpenAI 74, You.com 74,
+  Nimble 74, Firecrawl 73, DeepSeek 69. Brave's 65 to 75 was an endpoint switch; Exa's 74 to 80 was Exa 3.0's
+  dynamic highlights. Updates observed on Aug 18, Sep 8, 22, 28, Oct 6 and 19; cadence undocumented.
+- Keenable's NEEDLE: full standings for 23 engines (7-day mean share of an oracle ceiling, p50 and p95, dollars
+  per 1K, error rates; vendor-run with a GPT-6 Luna judge), with methodology and per-vertical leaders.
+- Vendor self-reports collected with harnesses: Tavily repo 93.3% SimpleQA against Perplexity 85.9, Serper 82.2,
+  Brave 76.1, Exa 71.2 (retrieval-only); Tavily August 2026 97.6% SimpleQA, 49.5 SealQA; Linkup 94% SimpleQA
+  Verified; Firecrawl 94.7% (best of two sessions, no competitors); Brave FreshQA 85.3% at $18 per 1K against
+  Parallel 79.0% at $49, Exa 78.0% at $84, Tavily 78.0% at $89; Perplexity's September 2025 latency table; You.com
+  95.17% SimpleQA with highlights.
+- Independent: OpenBenchmarks three-task tables for 13 vendors with an ordering-bias caveat; AIMultiple's 8-API
+  table with confidence intervals; BrowseComp-Plus has a single commercial data point (GPT-5 with the Google
+  Search API, 59.9%); Search Arena April 2025 had Gemini 2.5 Pro grounding at 1142 against Perplexity's
+  Sonar Reasoning Pro at 1136 (the 2026 board was inaccessible). No reproducible community mini-benchmark found.
+- Why the same product spans 32% to 91.8% on BrowseComp and 71% to 97.6% on SimpleQA: agent model, reasoning
+  tier, sample size, tool budget, judge, product tier and best-of reporting, all mapped in the notes.
+
+**Gaps for wave 2**
+- Brave 38.3% unconfirmed; the full 26-row Artificial Analysis table (only 12 rows extractable); Jina, Nimble and
+  Bright Data head-to-heads; Search Arena 2026 standings; ATLAS per-provider results.
+
+**Spend**
+- budget $240: $97.56 = 41% used at official prices ($108.86 = 45% with cache reads at $1/M). One thread still running (MCP ecosystem).
