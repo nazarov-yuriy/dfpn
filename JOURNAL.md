@@ -447,3 +447,14 @@ Dollar figures are estimates; the list price of the serving model is noted where
 
 **Spend**
 - budget $240: $103.04 = 43% used at official prices ($114.71 = 48% with cache reads at $1/M)
+
+## 2026-11-05 02:25 UTC. Wave 2 launched as a workflow
+
+- Script saved as `research_notes/wave2_workflow.js`. Six researchers (Keenable depth; Perplexity and Parallel;
+  Brave and Tavily under the hood; 2026 newcomers; the independent boards in full; practitioner sentiment) each
+  write a `wave2_*.md` note and return their five most load-bearing claims; a skeptic then re-fetches those
+  claims and appends a verification table to the same file. In parallel, three verifiers re-check 34 wave-1
+  numbers from primary sources and write `verification_wave1_{A,B,C}.md`. Verdicts are CONFIRMED, CORRECTED,
+  UNVERIFIABLE or REFUTED, with UNVERIFIABLE as the default under uncertainty.
+- Tool budgets are capped (35 calls per researcher, 15 per skeptic, 35 per verifier) to keep wave 2 near $60.
+- The spend tracker now also sums the workflow agents' transcripts.

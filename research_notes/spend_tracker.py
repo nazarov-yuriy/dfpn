@@ -12,6 +12,7 @@ import glob, json, os, sys, collections
 SESSION = os.environ.get("CLAUDE_CODE_SESSION_ID", "7b686cf8-f2a0-5249-ac1c-6e0b138a6ac4")
 MAIN = f"/root/.claude/projects/-home-user-dfpn/{SESSION}.jsonl"
 TASKS = f"/tmp/claude-0/-home-user-dfpn/{SESSION}/tasks/*.output"
+WORKFLOWS = f"/root/.claude/projects/-home-user-dfpn/{SESSION}/subagents/workflows/*/*.jsonl"  # Workflow-tool agents
 PRICE_LOW = {"input_tokens": 10, "output_tokens": 50, "cache_creation_input_tokens": 20, "cache_read_input_tokens": 0.25}
 PRICE = dict(PRICE_LOW, cache_read_input_tokens=1)  # conservative upper bound
 
@@ -50,6 +51,10 @@ def main():
     rows = [("main", *usage_of(MAIN))]
     for p in sorted(glob.glob(TASKS)):
         rows.append((os.path.basename(p)[:8], *usage_of(p)))
+    for p in sorted(glob.glob(WORKFLOWS)):
+        n, t = usage_of(p)
+        if n:
+            rows.append(("wf:" + os.path.basename(p)[:7], n, t))
     grand = collections.Counter()
     print(f"{'transcript':10s} {'turns':>5s} {'output':>9s} {'cache_w':>10s} {'cache_r':>11s} {'input':>7s} {'$ (hi)':>8s} {'$ (lo)':>8s}")
     for name, n, t in rows:
