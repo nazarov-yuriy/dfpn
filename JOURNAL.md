@@ -463,3 +463,78 @@ commit times in UTC; the session started at 00:13 UTC.
 - Correction (00:58 UTC): the entry times above were first written as estimates and have been replaced with the
   commit times. The workflow runs at most two agents at a time on this 4-CPU container (the Agent tool had no such
   cap in wave 1), so wave 2 will take about 45 minutes of wall-clock time at the same cost.
+
+## 2026-11-05 01:35 UTC. Wave 2 complete: six gap-filling notes, nine verification tables
+
+**Done**
+- The workflow ran 15 agents (370 tool calls, about 1.4M subagent transcript tokens) in 36 minutes. Committed
+  `wave2_keenable_depth.md`, `wave2_perplexity_parallel.md`, `wave2_brave_tavily.md`, `wave2_newcomers.md`,
+  `wave2_independent_boards.md`, `wave2_practitioner_sentiment.md` (each ending in a skeptic's verification
+  table) and `verification_wave1_{A,B,C}.md`.
+
+**Verification tally: 68 claims re-checked against primary sources**
+- 56 CONFIRMED, 7 CORRECTED, 5 UNVERIFIABLE, 0 REFUTED. The corrections:
+  - Tavily's sale to Nebius: Nebius says "the transaction value has not been disclosed"; the $275M figure is
+    Bloomberg's reporting, not an announced price.
+  - Exa 3.0 (2026-10-19) introduced only the Lite search type; Auto dates from December 2024 and Deep from
+    November 2025.
+  - Keenable's crawler page lists two user agents, KeenableBot and Keenable-User (RFC 9309 compliance stated),
+    not three.
+  - Artificial Analysis time per task: Exa auto 36.5 s, Perplexity medium 30.9 s, Octen 15.5 s (the notes had
+    36.9, 31.4 and 15.8).
+  - Search Arena, April 2025: the arXiv paper's table gives Gemini 2.5 Pro grounding 1150.6 and Sonar Reasoning
+    Pro High 1150.1, not 1142 and 1136.
+  - Keenable's founders: TechCrunch describes Styskin as ex-head of Yandex search, AI and cloud with 20 years at
+    Yandex and Amazon, and Petri as a German AI scientist; the "100B+ documents" and "15 engineers" figures are
+    the company's, not quotes.
+- Unverifiable: the 37.4% publisher CCBot-blocking figure (vendor blog not fetched), GitHub star counts (API
+  blocked for the verifier), the exact default of Claude Code's per-session web-search cap (the binary has the
+  setting `CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`), and the April 2025 Search Arena numbers.
+
+**Found: wave 2**
+- Keenable, why strong. The founders have disclosed almost nothing mechanistic. Styskin to TechCrunch: scanning
+  the whole web is "painfully expensive", so Keenable "narrow[s] the search space based on your query very fast"
+  with index structures tuned per task. The NEEDLE post calls Keenable "a learning machine" and gives the
+  timeline: first index February 2026, news April, query syntax May, snippets June. Vendor latency p50 200 ms;
+  Artificial Analysis independently measures 0.34 s per call, the fastest on its board, while scoring Keenable
+  realtime 67 against Exa auto 74 at launch. Dynamic Snippets (2026-10-15) is the one fully documented component:
+  a query-conditioned token classifier that cut responses from 135 to 69 KiB and, in vendor runs, BrowseComp
+  tokens from 1.16M to 466k with accuracy 56.6% to 67.3%. The Vals board ran Keenable with a single model;
+  77% of its finance citations were SEC filings. Practitioner signal is HN-only: positive on speed and price,
+  skeptical of the vendor-run NEEDLE. First-stage retrieval (lexical, dense or hybrid) is undisclosed.
+- Perplexity and Parallel. On the 2026-10-19 Artificial Analysis board Perplexity medium ties Exa auto at 80;
+  its lead over Parallel (75) is BrowseComp (87 against 77) while both score 81 on DeepSearchQA; search cost
+  $62.30 against $47.93 per 1K tasks. Perplexity's index (vendor, 2025-09-25): PerplexityBot, over 200B URLs,
+  exabyte scale, hybrid lexical and semantic retrieval, sub-document spans, cross-encoder rerankers, 50 QPS flat.
+  Its search_evals repository now benchmarks the Agent API (BrowseComp 0.805 against Parallel's Task API 0.56).
+  Cloudflare alleged a stealth Chrome-UA crawler at 3M to 6M requests a day; Perplexity attributed it to
+  BrowserBase and says Perplexity-User ignores robots.txt by design.
+- Brave and Tavily. Brave has been 100% own-index since April 2023 (the removed Bing calls supplied about 7% of
+  results) and now states "no fallback to another search engine for any query". Index-size claims went from "over
+  30 billion" (2023, repeated 2025) to "40 billion" (2026-02-24) to no number ("a vanity stat"). LLM Context
+  (2026-02-12) does search plus extraction plus chunk ranking under a 1k to 33k token budget, under 500 ms p90
+  claimed. The free plan became a $5 monthly credit requiring a card and attribution; the old free terms
+  prohibited AI inference. Brave's own SimpleQA F1: 92.1% single search, 94.1% multi-search. Anthropic added
+  Brave as a subprocessor on 2025-03-19. For Tavily, Sacra's "does not maintain its own search index" stands
+  against Tavily's claim of billions of pages crawled plus caching; the "SERP-based" accusation remains unproven.
+- Newcomers. Octen (APITECH AI Pte Ltd, Singapore; founder Kuan Zou, ex-Alibaba Cloud and Baidu search) is now
+  self-serve at $1 per 1K with MCP, skill and CLI; Artificial Analysis: Octen 77 at $9.07 per 1K tasks against Exa
+  auto 80 at $53.17, Nimble 74 at $46.14, DeepSeek 69 at $8.47. DeepSeek's search is $0.75 per 1K on an "in-house
+  search engine". Cloudflare's Web Search API resells Ceramic.ai at $0.25 per 1K (default, zero data retention,
+  40B+ pages claimed; founders ex-Google VP Anna Patterson and Cuil founder Tom Costello), Exa at $7 and Linkup at
+  $5, at list price. Nimble's price is $1.10 per 1K. Staan (Qwant and Ecosia) €2 to €4 per 1K under 800 ms p95.
+- Independent boards. Artificial Analysis covers 26 configurations from 14 providers (Valyu, Kagi and Mojeek
+  absent); at launch Tavily basic scored 66 at the highest search cost ($126 per 1K tasks); the model-cost column
+  is 3 to 4 times lower in October for identical sub-scores, unexplained. Vals: 208 legal and 450 finance tasks,
+  no July run found. AIMultiple (100 queries): Brave 14.89, Firecrawl 14.58, Exa 14.39, Parallel Pro 14.21, Tavily
+  13.67, Perplexity 12.96, SerpApi 12.28, with the top four inside overlapping confidence intervals.
+- Practitioners. Reddit, X and the Brave status page were unreachable from this session (a hard gap). Exa's
+  keyword weakness is attested by three independent write-ups (one mini-benchmark: Exa fastest at 137 ms but 3.2
+  of 10 on keyword relevance); Exa's status page shows six incidents from September to November 2026 (longest
+  4 h 56 min), Tavily, Perplexity and Parallel none. Keenable has no practitioner reports beyond HN.
+
+**Next**
+- Report writer, then an independent review of the report against the notes, then the final Journal entry.
+
+**Spend**
+- budget $240: $138.48 = 58% used at official prices ($156.66 = 65% with cache reads at $1/M)
