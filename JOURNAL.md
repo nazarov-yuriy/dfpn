@@ -538,3 +538,15 @@ commit times in UTC; the session started at 00:13 UTC.
 
 **Spend**
 - budget $240: $138.48 = 58% used at official prices ($156.66 = 65% with cache reads at $1/M)
+
+## 2026-11-05 01:50 UTC. Report drafted
+
+- `reports/Search API landscape and benchmarks.md`: about 14,300 words, 98 inline citations, eleven sections plus
+  a bottom-line-up-front and a conclusion; a 24-row benchmark table and a 27-row provider table; dedicated
+  sections on Keenable, Exa, Common Crawl versus commercial indexes, UVP per provider, methodology caveats, open
+  gaps, and a section relating the findings to this repository's own benchmarks. The writer applied the
+  verification verdicts (corrected values used, unverifiable figures marked) and notes that the README's
+  `../benchmark/` directories are not in this checkout.
+- Next: an independent adversarial review of the report against the notes (claim audit, verification
+  compliance, completeness, consistency), then fixes, then the final entry.
+- budget $240: $163.42 = 68% used at official prices ($183.98 = 77% with cache reads at $1/M)
