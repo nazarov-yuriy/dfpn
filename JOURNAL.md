@@ -667,3 +667,35 @@ commit times in UTC; the session started at 00:13 UTC.
 
 **Spend**
 - calibrated to billing (x0.83): $233.06 = 97% used (the open-source stack workflow is still running).
+
+## 2026-11-05 08:10 UTC. Extension 1 delivered as a digest; budget reached
+
+**Done**
+- The stack workflow completed its five researchers and four of five skeptics (12 confirmed, 3 corrected on
+  detail, 1 unverifiable, 0 refuted); the fifth note (job postings and repositories) landed at 07:54 and the
+  workflow was stopped before its writer started, because the calibrated spend had reached the $240 budget.
+- Instead of another writer agent, the coordinator wrote `reports/Open source stack for search APIs.md` directly
+  from the five notes' summaries, learning paths and the job-posting frequency table (about 2,300 words; a layered
+  map table, the stack ordered by hiring frequency, a minimum viable open-source architecture with the known cost
+  figures, replacements for this repository's hosted reranker, gaps). It is labelled as a digest; the notes
+  (about 350 KB, every claim with a URL) carry the detail.
+
+**Found**
+- Four providers disclose checkable machinery: Exa (link-prediction embeddings, a 256-d binary-quantized custom
+  vector database with 100,000 clusters, a Rust BM25 index at 1.8 TB per 1B documents before compression, RRF
+  k=60, relevance and authority rerankers, Lance on S3 with Ray Data, C++ and Rust serving, 80 A100s plus 144
+  H200s), Perplexity (Vespa, then an in-house Rust and C++ Search Core; Triton and TensorRT-LLM on H100 pods),
+  Keenable (Rust-first; Dynamic Snippets token classifier) and Brave (Cliqz lineage: query-n-gram page models in
+  Keyvi, RocksDB and Cassandra). The rest publish bot names and SDKs.
+- Job postings converge on Python plus Rust (six companies) with C++ (four) and Go (five), Kubernetes and
+  Terraform on AWS or GCP, Spark lakehouse pipelines, crawl politeness, inverted-index pipelines, multi-stage
+  ranking, contrastive embedding training, Playwright and anti-bot work, TypeScript for MCP and SDKs.
+- Open equivalents exist for every layer (Nutch and StormCrawler, Playwright, trafilatura, datatrove, tantivy,
+  Vespa, PISA, FAISS, Lance, BGE and Qwen3 embeddings, LightGBM and CatBoost, Qwen3-Reranker, rank_llm,
+  LLMLingua-2, vLLM and TEI, the MCP SDKs) except two: a fresh index above about a billion pages and anti-bot
+  rendering at crawl scale.
+
+**Spend**
+- calibrated to billing (x0.83): $242.62 = 101% used
+- Session total: 3 reports, 23 note files, 2 verification sets, 40 agents. The calibration factor (0.83) comes
+  from one billing observation; the true figure may differ by a few dollars either way.
