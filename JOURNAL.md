@@ -147,3 +147,52 @@ Dollar figures are estimates; the list price of the serving model is noted where
 - Wave 2 additions: Perplexity's search_evals repository (an open harness with cross-vendor numbers), Exa's ATLAS
   benchmark, and the per-task cost data in the Artificial Analysis index.
 - Tracker: TOTAL         99    352923    1861342     9152277    2694    64.05    57.19 budget $240: 27% used (high estimate), 24% (low estimate) 
+
+## 2026-11-05 01:20 UTC. Wave 1, thread 3 back: benchmark catalogue
+
+**Done**
+- Committed `benchmarks_catalogue.md`: about 30 benchmarks and three cross-vendor leaderboards, every number tagged
+  vendor, independent or academic.
+
+**Found: benchmarks**
+- SimpleQA is a Wikipedia test. OpenAI's own paper cites Wikipedia for about 3.5k of 4.3k questions (about 81%),
+  then fandom (410), ac.uk (154) and imdb (121). Google's SimpleQA Verified paper says tool-enabled runs are
+  "near perfect" and the set reflects "substantial human rater biases". In Parallel's September 2026 run all ten
+  provider configurations score 91% to 97%. Brave found its LLM judge wrong on 167 of 292 "incorrect" verdicts;
+  Brave and SerpApi both hand-filtered pages that leak the benchmark (SerpApi dropped 40 of 1,000 Verified
+  questions). Search Arena finds real users disfavour Wikipedia citations. This matches the repository's own
+  finding that pinning Wikipedia helps SimpleQA but not agent requests.
+- Agent-in-the-loop versus retrieval-only harnesses flip the winners. Agent loops: Artificial Analysis, Parallel,
+  OpenBenchmarks hard-retrieval and multi-hop, Firecrawl, SerpApi, Brave multi-search. Retrieval-only: the
+  Tavily repo, Perplexity single-step, You.com 2025, Exa pointwise, AIMultiple, BEIR/MTEB. BrowseComp-Plus
+  isolates the retriever: GPT-5 goes from 55.9% with BM25 to 70.1% with Qwen3-Embedding-8B over a fixed corpus.
+  LiveBrowseComp shows agents use retrieved evidence less than a third of the time, and closed-book pass@4
+  reaches 44.5% on BrowseComp.
+- Saturation: SimpleQA and SimpleQA Verified are saturated for any tool-enabled system. BrowseComp is near the
+  ceiling for deep-research products (88% to 94% on 100-question subsets) but still spreads search APIs 63 to 87
+  on Artificial Analysis' hard-200 subset and 32% to 74% in Parallel's harness. DeepSearchQA (74 to 86),
+  OpenBenchmarks hard retrieval (38 to 83) and multi-hop (0 to 48 F1), SealQA (o3 at 17%) and WideSearch (about
+  0% to 5%) still discriminate.
+- Artificial Analysis Search Index methodology: Stirrup harness, GPT-5.6 Luna as candidate and grader, 25 turns,
+  at most 10 results per search, text-only web_fetch with a 15 s timeout, a contamination filter; the score is
+  the equal-weighted mean of DeepSearchQA F1, BrowseComp (n=200) and AA-Omniscience (600). Cost is model tokens
+  plus list-price search per 1K tasks; model time is derived from tokens and search time is measured. No p50/p95
+  and no confidence intervals. Leaderboards of 2026-08-18 and 2026-10-19 are recorded in full in the notes.
+- Other cross-vendor boards: OpenBenchmarks (three boards, fixed reader, judge and agent, three runs, October
+  2026) and AIMultiple (100 queries, GPT-5.2 judge, bootstrap confidence intervals, December 2025).
+- Latency and cost reporting is inconsistent: only Perplexity (p50 to p95 from us-east-1) and You.com (p50)
+  publish percentiles; Parallel reports dollars per 1K questions and no latency; OpenBenchmarks mixes mean call
+  latency, median task time and cost per 1K correct answers.
+- Methodology critiques on record: Google grading itself on DeepSearchQA; Parallel disclosing unpublished judge,
+  tool budget and sample IDs with about 14-point noise at n=50; Linkup, SerpApi and Brave tables mixing
+  competitors' self-published numbers from different harnesses; Firecrawl reporting best of two; OpenBenchmarks
+  admitting later-benchmarked vendors score higher for non-quality reasons; TREC RAG 2025 automated relevance
+  judgments agreeing with humans at only 0.30 to 0.34; Search Arena rewarding length and citation count.
+
+**Gaps for wave 2**
+- Keenable NEEDLE full scores (one source returned 403), Valyu's harness (page 404), WideSearch affiliation, any
+  independent measurement of the Wikipedia top-k inflation effect, and sensitivity of the Artificial Analysis
+  ranking to web_fetch and candidate model.
+
+**Spend**
+- Tracker: TOTAL        115    479252    2263554    11803794    3120    81.07    72.22 budget $240: 34% used (high estimate), 30% (low estimate)  Six threads still running.
