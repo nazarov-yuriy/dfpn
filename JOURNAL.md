@@ -606,7 +606,7 @@ commit times in UTC; the session started at 00:13 UTC.
 - Token totals across all transcripts (turns, output, cache-write, cache-read, input): TOTAL        286   1182531    6568069    32871118    7504   223.43   198.78
 - budget $240: $198.78 = 83% used at official prices ($223.43 = 93% with cache reads at $1/M)
 
-## 2026-11-05 03:05 UTC. Extension: mapping the providers' technology to open source
+## 2026-11-05 07:05 UTC. Extension: mapping the providers' technology to open source
 
 - The user reports $165 billed where the tracker estimated $199, so the tracker runs about 17% high; it now
   prints a calibrated figure (x0.83). Remaining budget about $75; this extension is sized to about $45.
@@ -617,7 +617,7 @@ commit times in UTC; the session started at 00:13 UTC.
   repositories), each followed by a skeptic that re-checks its top claims, then a writer that produces
   `reports/Open source stack for search APIs.md`. Notes go to `research_notes/Open source stack for search APIs/`.
 
-## 2026-11-05 03:15 UTC. Extension 2: publicly visible partnerships
+## 2026-11-05 07:17 UTC. Extension 2: publicly visible partnerships
 
 - Question: which AI labs, clouds, agent-framework and harness authors, coding agents and agent products have a
   visible relationship with which search provider (recommendation such as Cohere recommending Tavily for its
@@ -626,3 +626,44 @@ commit times in UTC; the session started at 00:13 UTC.
 - Sized to the remaining budget: two researchers (labs, clouds and platforms; frameworks, harnesses and agent
   products), one skeptic over their top claims, one writer producing `reports/Search provider partnerships map.md`.
   Notes in `research_notes/Search provider partnerships map/`. Runs alongside the open-source stack workflow.
+
+## 2026-11-05 07:55 UTC. Extension 2 delivered: partnerships map
+
+**Done**
+- The workflow ran 4 agents (61 tool calls, about 680k transcript tokens) in 36 minutes. Committed
+  `research_notes/Search provider partnerships map/` (two notes with about 70 and 75 relationship rows, plus
+  `verification.md`) and `reports/Search provider partnerships map.md` (about 9,300 words, 181 links, six
+  matrices, a per-provider ledger, an exclusivity analysis and a table of acquisitions, investments and resale).
+- Verification of the ten top claims: 8 confirmed, 2 corrected (LangChain's open_deep_research offers OpenAI
+  native, Anthropic native or no search as the alternatives to its Tavily default; Google Cloud's "Grounding with
+  Exa" and "Grounding with Parallel" are "Separate Offerings" bought from the vendor, not first-party). Both
+  corrections are reflected in the report.
+
+**Found**
+- Frontier labs build their own search. Only Anthropic visibly outsources: Brave Search was added to its
+  subprocessor list on 2025-03-19 and the leaked tool schema was named BraveSearchParams; its docs name no
+  provider, and the live trust page could not be re-read in 2026. OpenAI, Google, Microsoft, xAI, DeepSeek and
+  Perplexity run their own indexes; Mistral, Groq, Ollama and Zed ship built-in search without naming a backend.
+- Tavily owns the documentation-default tier: the only internet-search tool in Cohere's docs and cookbooks (so
+  "Cohere recommends Tavily" is true in substance, though no literal "we recommend" sentence exists and the docs
+  say "swap in any other LangChain tool you like"), a dedicated NVIDIA NeMo Agent Toolkit package, the search in
+  AWS, Azure and IBM first-party samples, the hard-coded default of LangChain's open_deep_research and GPT
+  Researcher, the default engine of OpenHands Cloud, the only search package in Mastra, one of Pydantic AI's two
+  common tools; Nebius acquired it on 2026-02-10.
+- Exa owns the platform-default tier: the fallback engine for every non-native model on OpenRouter, the sole
+  backend of Letta's web_search, the search behind Firefox's Smart Window, a Google Cloud grounding option, a
+  Vercel AI Gateway tool, a Cloudflare resale option, Baseten hosted tools, and press-named customers Cursor,
+  Notion AI, Cognition, HubSpot, monday.com. Parallel is the second name wherever a hyperscaler lists two
+  (Google Cloud, Vercel, OpenRouter, Cerebras, AWS Marketplace).
+- Brave sells quietly (Anthropic, OpenClaw's default key prompt, a logo wall with Cohere, Mistral, Together and
+  Snowflake). Niches: Keenable (Baseten, Pipecat), Linkup (Cloudflare, EU enterprise logos), You.com
+  (DuckDuckGo, Windsurf, Harvey), Ceramic (Cloudflare's default at $0.25 per 1K).
+- Exclusive relationships are rare: two acquisitions (Nebius and Tavily, Elastic and Jina), Firefox and Exa,
+  Letta and Exa, OpenHands and Tavily, Anthropic and Brave. Every cloud, gateway, orchestration framework, chat UI
+  and plugin marketplace observed is multi-homed with three to thirty providers; Anthropic's official plugin
+  marketplace alone lists Exa, Tavily, Firecrawl, Bright Data, Nimble, You.com and Context7.
+- Gaps: Cursor's Exa backend is inferred from Exa naming Cursor as a customer; Groq Compound, Mistral, Zed and
+  Devin do not disclose their engines; Meta's Llama Stack provider registry could not be fetched.
+
+**Spend**
+- calibrated to billing (x0.83): $233.06 = 97% used (the open-source stack workflow is still running).
