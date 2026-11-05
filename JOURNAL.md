@@ -196,3 +196,47 @@ Dollar figures are estimates; the list price of the serving model is noted where
 
 **Spend**
 - Tracker: TOTAL        115    479252    2263554    11803794    3120    81.07    72.22 budget $240: 34% used (high estimate), 30% (low estimate)  Six threads still running.
+
+## 2026-11-05 01:30 UTC. Wave 1, thread 4 back: SERP wrappers, official engine APIs, platform tools
+
+**Done**
+- Committed `providers_serp_wrappers_and_platforms.md` (375 lines, about 96 citations), with a normalized price
+  table and a text diagram of who sits on top of whom.
+
+**Found**
+- Google SERP scraping is a commodity. Entry-tier price per 1K ten-result Google queries: DataForSEO standard
+  queue $0.60 (5-minute latency), Serper $1.00, Oxylabs $1.00 to $1.35, Bright Data $1.50, Serply and Value SERP
+  about $2.00, ScrapingBee about $2.53, SearchApi $4.00, Firecrawl Hobby about $7.60, SerpApi $10 (Starter $25).
+  At scale the floor is Serper $0.30 and Oxylabs $0.50. SearchApi covers about 80 engines, Bright Data 7,
+  Oxylabs 4; Serper is Google-only. SerpApi and SearchApi sell a $2M "legal shield" on production plans.
+- Google's changes hit the wrappers: JavaScript required for results since about 2025-01-15 (Oxylabs now sells a
+  separate Google-JS SKU at 35% to 80% more), and `num=100` removed in September 2025, so a top-100 page costs
+  about 10 requests.
+- Official engine APIs are closing or getting expensive. Google Custom Search JSON API is closed to new customers
+  and discontinued 2027-01-01 ($5 per 1K for existing users). Gemini grounding costs $14 per 1K search queries on
+  Gemini 3+ and $35 per 1K grounded prompts on 2.5 models; Vertex Enterprise Web Grounding $45 per 1K. Bing Search
+  APIs retired 2025-08-11; Grounding with Bing Search now $14 per 1K transactions, no raw results. Yandex Search
+  API about $4 per 1K synchronous. DuckDuckGo has only the Instant Answer API. SearXNG public instances are
+  routinely blocked by Google (reCAPTCHA suspends the engine for 7 days by default).
+- LLM-platform search tools, price per 1K calls plus tokens: xAI web_search $5; Perplexity Search API $5 ($1
+  fast); OpenAI $10 (backend undisclosed; 2024 evidence points to Bing plus OAI-SearchBot); Anthropic $10 per
+  search (backend undisclosed; March 2025 evidence points to Brave Search as subprocessor); Gemini $14; Bing
+  grounding $14; Mistral about $30 (third-party figure).
+- Meta-layers over other engines: Jina s.jina.ai (engine undisclosed, 2.5 s average), Firecrawl /search (uses
+  Google-syntax `tbs=qdr:` filters and an "upstream search provider", so inferred Google-derived), Tavily ($8 per
+  1K credits pay-as-you-go, describes "aggregating up to 20 sites per call"; analysts say it has no index of its
+  own), Linkup ($5 to $6 per 1K, "personalized indexes", self-reported 94% on SimpleQA Verified), You.com ($5 per
+  1K, "licensed data providers"), mcp-omnisearch fanning out to seven backends.
+- Artificial Analysis Search Index, 2026-10-19: Exa auto 80 and Perplexity medium 80, Octen 77, Parallel
+  advanced 75, Brave 75, OpenAI Web Search 74 ($40 per 1K tasks), You.com 74, Nimble 74, Firecrawl 73; a
+  model-only baseline scores 33. No SERP wrapper is on the board.
+- Correction to the orientation entry: the "OpenAI web search 57.7% on BrowseComp" figure that the first web
+  search summarized was not found on any Parallel page fetched; treat it as unverified.
+
+**Gaps for wave 2**
+- Who is Octen (new on the Artificial Analysis board)? Independent latency data for SERP wrappers; current
+  disclosure of OpenAI's and Anthropic's index providers; Nimble's price conflict; HN threads on the Bing
+  retirement.
+
+**Spend**
+- Tracker: TOTAL        120    547816    2645463    12422520    3250    92.76    83.44 budget $240: 39% used (high estimate), 35% (low estimate)  Five threads still running.
