@@ -616,3 +616,13 @@ commit times in UTC; the session started at 00:13 UTC.
   snippets; serving, data infrastructure and the agent interface; evidence from job postings and public
   repositories), each followed by a skeptic that re-checks its top claims, then a writer that produces
   `reports/Open source stack for search APIs.md`. Notes go to `research_notes/Open source stack for search APIs/`.
+
+## 2026-11-05 03:15 UTC. Extension 2: publicly visible partnerships
+
+- Question: which AI labs, clouds, agent-framework and harness authors, coding agents and agent products have a
+  visible relationship with which search provider (recommendation such as Cohere recommending Tavily for its
+  web_search tool, default tool, documented integration, press-released partnership, subprocessor, reseller,
+  acquisition, investment, customer case study), and who is already "taken" by whom.
+- Sized to the remaining budget: two researchers (labs, clouds and platforms; frameworks, harnesses and agent
+  products), one skeptic over their top claims, one writer producing `reports/Search provider partnerships map.md`.
+  Notes in `research_notes/Search provider partnerships map/`. Runs alongside the open-source stack workflow.
