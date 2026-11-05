@@ -66,6 +66,8 @@ def main():
           f"{grand['cache_read_input_tokens']:11d} {grand['input_tokens']:7d} {hi:8.2f} {lo:8.2f}")
     print(f"budget ${budget:.0f}: ${lo:.2f} = {lo / budget * 100:.0f}% used at official prices "
           f"(${hi:.2f} = {hi / budget * 100:.0f}% with cache reads at $1/M)")
+    # The user's billing showed $165 when this estimate read $199 (2026-11-05), so the estimate runs about 17% high.
+    print(f"calibrated to billing (x0.83): ${lo * 0.83:.2f} = {lo * 0.83 / budget * 100:.0f}% used")
 
 
 if __name__ == "__main__":

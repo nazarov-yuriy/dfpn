@@ -605,3 +605,14 @@ commit times in UTC; the session started at 00:13 UTC.
   writer (two passes), 1 reviewer. About 1,330 tool calls in the subagents.
 - Token totals across all transcripts (turns, output, cache-write, cache-read, input): TOTAL        286   1182531    6568069    32871118    7504   223.43   198.78
 - budget $240: $198.78 = 83% used at official prices ($223.43 = 93% with cache reads at $1/M)
+
+## 2026-11-05 03:05 UTC. Extension: mapping the providers' technology to open source
+
+- The user reports $165 billed where the tracker estimated $199, so the tracker runs about 17% high; it now
+  prints a calibrated figure (x0.83). Remaining budget about $75; this extension is sized to about $45.
+- Question: which technologies do these companies use at each layer of a search API, what are the open-source
+  equivalents, and what stack does a practitioner need to know?
+- Method: a workflow of five researchers (crawling and extraction; indexing and retrieval; ranking, reranking and
+  snippets; serving, data infrastructure and the agent interface; evidence from job postings and public
+  repositories), each followed by a skeptic that re-checks its top claims, then a writer that produces
+  `reports/Open source stack for search APIs.md`. Notes go to `research_notes/Open source stack for search APIs/`.
