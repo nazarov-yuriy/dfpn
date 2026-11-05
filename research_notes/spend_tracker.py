@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Sum token usage of this Claude Code session (main transcript + subagent transcripts) and estimate cost.
 
-The transcripts are JSON lines; only `message.usage` fields are read, never the content. Prices are the
-list prices found for the serving model (third-party aggregators, 2026-11-05; unverified):
-  input $10/M, output $50/M, 1-hour cache write $20/M, cache read $1/M (one source says $0.25/M).
+The transcripts are JSON lines; only `message.usage` fields are read, never the content. Prices are Anthropic's
+official list prices for Claude Fable 5.1 (platform.claude.com/docs/en/about-claude/pricing, read 2026-11-05):
+  input $10/M, output $50/M, 1-hour cache write $20/M, cache read $0.25/M.
+The "hi" column prices cache reads at $1/M (the Fable 5 rate) as a conservative upper bound.
 Usage: python3 -I spend_tracker.py [--budget 240]
 """
 import glob, json, os, sys, collections
@@ -11,8 +12,8 @@ import glob, json, os, sys, collections
 SESSION = os.environ.get("CLAUDE_CODE_SESSION_ID", "7b686cf8-f2a0-5249-ac1c-6e0b138a6ac4")
 MAIN = f"/root/.claude/projects/-home-user-dfpn/{SESSION}.jsonl"
 TASKS = f"/tmp/claude-0/-home-user-dfpn/{SESSION}/tasks/*.output"
-PRICE = {"input_tokens": 10, "output_tokens": 50, "cache_creation_input_tokens": 20, "cache_read_input_tokens": 1}
-PRICE_LOW = dict(PRICE, cache_read_input_tokens=0.25)
+PRICE_LOW = {"input_tokens": 10, "output_tokens": 50, "cache_creation_input_tokens": 20, "cache_read_input_tokens": 0.25}
+PRICE = dict(PRICE_LOW, cache_read_input_tokens=1)  # conservative upper bound
 
 
 def usage_of(path):
@@ -58,7 +59,8 @@ def main():
     hi, lo = cost(grand, PRICE), cost(grand, PRICE_LOW)
     print(f"{'TOTAL':10s} {sum(r[1] for r in rows):5d} {grand['output_tokens']:9d} {grand['cache_creation_input_tokens']:10d} "
           f"{grand['cache_read_input_tokens']:11d} {grand['input_tokens']:7d} {hi:8.2f} {lo:8.2f}")
-    print(f"budget ${budget:.0f}: {hi / budget * 100:.0f}% used (high estimate), {lo / budget * 100:.0f}% (low estimate)")
+    print(f"budget ${budget:.0f}: ${lo:.2f} = {lo / budget * 100:.0f}% used at official prices "
+          f"(${hi:.2f} = {hi / budget * 100:.0f}% with cache reads at $1/M)")
 
 
 if __name__ == "__main__":

@@ -347,3 +347,10 @@ Dollar figures are estimates; the list price of the serving model is noted where
 
 **Spend**
 - Tracker: TOTAL        124    557093    2827173    13070108    3318    97.50    87.70 budget $240: 41% used (high estimate), 37% (low estimate)  Two threads still running (head-to-head results, MCP ecosystem).
+
+## 2026-11-05 01:55 UTC. Pricing confirmed
+
+- Anthropic's official pricing page lists Claude Fable 5.1 at $10 per million input tokens, $12.50 for 5-minute
+  and $20 for 1-hour cache writes, $0.25 for cache reads, and $50 per million output tokens. The tracker's
+  "official" column is therefore the right estimate; the earlier high column ($1 cache reads) is kept only as a
+  conservative upper bound. Every previous entry's lower figure is the one to read.
