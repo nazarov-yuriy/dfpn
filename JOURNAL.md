@@ -399,3 +399,51 @@ Dollar figures are estimates; the list price of the serving model is noted where
 
 **Spend**
 - budget $240: $97.56 = 41% used at official prices ($108.86 = 45% with cache reads at $1/M). One thread still running (MCP ecosystem).
+
+## 2026-11-05 02:15 UTC. Wave 1 complete, thread 9 back: MCP ecosystem
+
+**Done**
+- Committed `mcp_ecosystem.md`. All nine wave-1 note files are now in the repository (about 630 KB of sourced notes).
+- Checked that web search still works from the coordinating session; the researchers' "shared budget exhausted"
+  reports describe a per-agent cap (the notes record a 200-call session cap for Claude Code's WebSearch tool).
+
+**Found: MCP ecosystem (counters observed 2026-11-05)**
+- GitHub stars: Apify 14,791, Firecrawl 7,764, Exa 5,212, Bright Data 2,710, Perplexity 2,608, Tavily 2,478,
+  Brave 1,561, DuckDuckGo community server 1,567, SearXNG 1,345, Jina 902, Kagi 558, mcp-omnisearch 358, SerpApi
+  183, Keenable 6. Context7 (docs search) 64,201.
+- npm weekly downloads: context7 741k, firecrawl-mcp 147k, exa-mcp-server 76k, Brave 59k, Perplexity 42k, Apify
+  31k, tavily-mcp 24k, Bright Data 18k, mcp-searxng 15k, Keenable 128. PyPI monthly: the reference fetch server
+  506k, duckduckgo-mcp-server 72k. No registry publishes install or call counts; Smithery shut its proxy on
+  2026-10-31.
+- Hosting: nearly every vendor runs a hosted Streamable-HTTP endpoint (Exa, Tavily, Perplexity, Firecrawl, Jina,
+  Kagi, Linkup, Parallel, Bright Data, Apify, Oxylabs, SerpApi, ZenRows, You.com, Keenable, Nimble); Brave is the
+  holdout (local only). Keyless tiers: Keenable (1,000 requests per hour per IP), Parallel, Exa (IPv4 only),
+  Firecrawl, Tavily, You.com. OAuth: Perplexity, Tavily, Exa, Firecrawl, Parallel, Keenable, Apify, ZenRows.
+- Tool surfaces converge on search, fetch or extract, map or crawl, and an async research or agent tool; vendors
+  are pruning tools (Jina removed eight, Exa dropped company and people tools, Kagi removed FastGPT).
+- First-party search pricing: Anthropic $10 per 1K searches (web fetch free; Claude Code's WebSearch uses it with
+  a 200-call session cap); OpenAI $10 per 1K on reasoning models, $25 per 1K preview on 4o-class; Google $14 per
+  1K after 5,000 free a month on Gemini 3 ($35 on 2.5); xAI $5 per 1K. Codex's web_search defaults to a "cached"
+  OpenAI index. Cursor's @Web is reported (third party only) to run on Exa.
+- Skills and CLIs as the alternative to MCP: the Agent Skills open standard (2025-12-18), Keenable's SKILL.md and
+  Homebrew CLI, Firecrawl's CLI and skills, Brave's bx CLI, Nimble's 13 skills, Parallel's CLI, Tavily's CLI; Exa,
+  Tavily and Keenable all shipped Antigravity and Gemini CLI plugins in October and November 2026.
+
+**Wave 1 summary**
+- Nine threads, about 900 tool calls, roughly 1.9M subagent tokens of transcript, 23 to 30 minutes each. Cost of
+  the whole session so far is in the tracker line below.
+- The picture that emerges: (1) the independent boards (Artificial Analysis, Vals, OpenBenchmarks) rank Exa,
+  Perplexity, Parallel, Keenable and Brave at the top, but the leaders swap monthly and the gaps are within noise;
+  (2) an own index is a cost, freshness, storage-rights and legal-insulation story more than an accuracy story,
+  since aggregators (Tavily, Linkup) match own-index vendors on SimpleQA; (3) what moves agent accuracy is
+  queries per task, result-text quality (full content, highlights, dynamic snippets) and latency, because about
+  95% of per-task cost is model tokens; (4) Common Crawl is a sampled, politeness-limited monthly archive with
+  no inverted index, no ranking and no serving layer, and none of the commercial providers admits to using it.
+
+**Next: wave 2**
+- Six gap-filling threads (Keenable depth, Perplexity and Parallel, Brave and Tavily under the hood, 2026
+  newcomers, the independent boards in full, practitioner sentiment), each followed by a skeptic that re-fetches
+  its top claims, plus three verifiers over about 33 load-bearing wave-1 numbers. Then the report.
+
+**Spend**
+- budget $240: $103.04 = 43% used at official prices ($114.71 = 48% with cache reads at $1/M)
