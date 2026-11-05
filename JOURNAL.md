@@ -12,11 +12,12 @@ Layout:
 - `reports/`: the synthesized report.
 
 Spend tracking: token counts are summed from the session transcript (`~/.claude/projects/.../*.jsonl`).
-Dollar figures are estimates; the list price of the serving model is noted where it was found.
+Dollar figures use the official list prices of the serving model (see the 00:46 entry). Entry times are the
+commit times in UTC; the session started at 00:13 UTC.
 
 ---
 
-## 2026-11-05 00:25 UTC. Setup and orientation
+## 2026-11-05 00:26 UTC. Setup and orientation
 
 **Done**
 - Read the repository: a Tavily-compatible `/search` proxy that widens the candidate pool and reranks it
@@ -44,7 +45,7 @@ Dollar figures are estimates; the list price of the serving model is noted where
   own-index providers; SERP wrappers and platform search tools; Common Crawl versus commercial indexes; the MCP
   ecosystem; market positioning and UVP. Commit their notes here when they return.
 
-## 2026-11-05 00:50 UTC. Wave 1, first thread back: Keenable
+## 2026-11-05 00:40 UTC. Wave 1, first thread back: Keenable
 
 **Done**
 - Committed `research_notes/Search API landscape and benchmarks/keenable.md` (267 lines, about 110 source links;
@@ -93,7 +94,7 @@ Dollar figures are estimates; the list price of the serving model is noted where
   Artificial Analysis Search Index data (the page moved); Keenable crawl cadence and Common Crawl seeding;
   practitioner opinions on Keenable.
 
-## 2026-11-05 01:05 UTC. Wave 1, thread 2 back: Exa
+## 2026-11-05 00:41 UTC. Wave 1, thread 2 back: Exa
 
 **Done**
 - Committed the final `exa.md` (seven sections; vendor, competitor and independent sources labelled). This thread
@@ -148,7 +149,7 @@ Dollar figures are estimates; the list price of the serving model is noted where
   benchmark, and the per-task cost data in the Artificial Analysis index.
 - Tracker: TOTAL         99    352923    1861342     9152277    2694    64.05    57.19 budget $240: 27% used (high estimate), 24% (low estimate) 
 
-## 2026-11-05 01:20 UTC. Wave 1, thread 3 back: benchmark catalogue
+## 2026-11-05 00:43 UTC. Wave 1, thread 3 back: benchmark catalogue
 
 **Done**
 - Committed `benchmarks_catalogue.md`: about 30 benchmarks and three cross-vendor leaderboards, every number tagged
@@ -197,7 +198,7 @@ Dollar figures are estimates; the list price of the serving model is noted where
 **Spend**
 - Tracker: TOTAL        115    479252    2263554    11803794    3120    81.07    72.22 budget $240: 34% used (high estimate), 30% (low estimate)  Six threads still running.
 
-## 2026-11-05 01:30 UTC. Wave 1, thread 4 back: SERP wrappers, official engine APIs, platform tools
+## 2026-11-05 00:44 UTC. Wave 1, thread 4 back: SERP wrappers, official engine APIs, platform tools
 
 **Done**
 - Committed `providers_serp_wrappers_and_platforms.md` (375 lines, about 96 citations), with a normalized price
@@ -241,7 +242,7 @@ Dollar figures are estimates; the list price of the serving model is noted where
 **Spend**
 - Tracker: TOTAL        120    547816    2645463    12422520    3250    92.76    83.44 budget $240: 39% used (high estimate), 35% (low estimate)  Five threads still running.
 
-## 2026-11-05 01:40 UTC. Wave 1, thread 5 back: market positioning and UVP
+## 2026-11-05 00:44 UTC. Wave 1, thread 5 back: market positioning and UVP
 
 **Done**
 - Committed `uvp_and_market.md` (verbatim homepage positioning for 13+ vendors, funding, practitioner sentiment
@@ -289,7 +290,7 @@ Dollar figures are estimates; the list price of the serving model is noted where
 **Spend**
 - Tracker: TOTAL        123    554434    2818642    12871170    3316    97.00    87.35 budget $240: 40% used (high estimate), 36% (low estimate)  Four threads still running.
 
-## 2026-11-05 01:50 UTC. Wave 1, threads 6 and 7 back: Common Crawl versus commercial; own-index providers
+## 2026-11-05 00:45 UTC. Wave 1, threads 6 and 7 back: Common Crawl versus commercial; own-index providers
 
 **Done**
 - Committed `common_crawl_vs_commercial.md` and `providers_own_index.md` (412 lines, 19 sections, a 27-row
@@ -348,14 +349,14 @@ Dollar figures are estimates; the list price of the serving model is noted where
 **Spend**
 - Tracker: TOTAL        124    557093    2827173    13070108    3318    97.50    87.70 budget $240: 41% used (high estimate), 37% (low estimate)  Two threads still running (head-to-head results, MCP ecosystem).
 
-## 2026-11-05 01:55 UTC. Pricing confirmed
+## 2026-11-05 00:46 UTC. Pricing confirmed
 
 - Anthropic's official pricing page lists Claude Fable 5.1 at $10 per million input tokens, $12.50 for 5-minute
   and $20 for 1-hour cache writes, $0.25 for cache reads, and $50 per million output tokens. The tracker's
   "official" column is therefore the right estimate; the earlier high column ($1 cache reads) is kept only as a
   conservative upper bound. Every previous entry's lower figure is the one to read.
 
-## 2026-11-05 02:05 UTC. Wave 1, thread 8 back: published head-to-head results
+## 2026-11-05 00:49 UTC. Wave 1, thread 8 back: published head-to-head results
 
 **Done**
 - Committed `head_to_head_results.md` (about 98 KB, 89 unique sources; every number dated and labelled vendor or
@@ -400,7 +401,7 @@ Dollar figures are estimates; the list price of the serving model is noted where
 **Spend**
 - budget $240: $97.56 = 41% used at official prices ($108.86 = 45% with cache reads at $1/M). One thread still running (MCP ecosystem).
 
-## 2026-11-05 02:15 UTC. Wave 1 complete, thread 9 back: MCP ecosystem
+## 2026-11-05 00:52 UTC. Wave 1 complete, thread 9 back: MCP ecosystem
 
 **Done**
 - Committed `mcp_ecosystem.md`. All nine wave-1 note files are now in the repository (about 630 KB of sourced notes).
@@ -430,7 +431,8 @@ Dollar figures are estimates; the list price of the serving model is noted where
   Tavily and Keenable all shipped Antigravity and Gemini CLI plugins in October and November 2026.
 
 **Wave 1 summary**
-- Nine threads, about 900 tool calls, roughly 1.9M subagent tokens of transcript, 23 to 30 minutes each. Cost of
+- Nine threads, about 900 tool calls, roughly 1.9M subagent tokens of transcript, 10 to 21 minutes each; the
+  whole wave ran from 00:28 to 00:52 UTC. Cost of
   the whole session so far is in the tracker line below.
 - The picture that emerges: (1) the independent boards (Artificial Analysis, Vals, OpenBenchmarks) rank Exa,
   Perplexity, Parallel, Keenable and Brave at the top, but the leaders swap monthly and the gaps are within noise;
@@ -448,7 +450,7 @@ Dollar figures are estimates; the list price of the serving model is noted where
 **Spend**
 - budget $240: $103.04 = 43% used at official prices ($114.71 = 48% with cache reads at $1/M)
 
-## 2026-11-05 02:25 UTC. Wave 2 launched as a workflow
+## 2026-11-05 00:56 UTC. Wave 2 launched as a workflow
 
 - Script saved as `research_notes/wave2_workflow.js`. Six researchers (Keenable depth; Perplexity and Parallel;
   Brave and Tavily under the hood; 2026 newcomers; the independent boards in full; practitioner sentiment) each
@@ -458,3 +460,6 @@ Dollar figures are estimates; the list price of the serving model is noted where
   UNVERIFIABLE or REFUTED, with UNVERIFIABLE as the default under uncertainty.
 - Tool budgets are capped (35 calls per researcher, 15 per skeptic, 35 per verifier) to keep wave 2 near $60.
 - The spend tracker now also sums the workflow agents' transcripts.
+- Correction (00:58 UTC): the entry times above were first written as estimates and have been replaced with the
+  commit times. The workflow runs at most two agents at a time on this 4-CPU container (the Agent tool had no such
+  cap in wave 1), so wave 2 will take about 45 minutes of wall-clock time at the same cost.
