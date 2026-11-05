@@ -550,3 +550,58 @@ commit times in UTC; the session started at 00:13 UTC.
 - Next: an independent adversarial review of the report against the notes (claim audit, verification
   compliance, completeness, consistency), then fixes, then the final entry.
 - budget $240: $163.42 = 68% used at official prices ($183.98 = 77% with cache reads at $1/M)
+
+## 2026-11-05 02:25 UTC. Final: report reviewed, revised and delivered
+
+**Done**
+- Adversarial review (round 1): about 150 claims grep-checked against the notes, 0 unsupported, 1 merged range
+  in the headline, 2 mislabelled items, 8 corrected verdicts all applied, 7 unverifiable figures all marked.
+  Summary in `research_notes/Search API landscape and benchmarks/report_review_round1.md`.
+- The writer applied all 26 fixes (merged range split into Exa 33.7% to 91.8% and Parallel Turbo 32% to 75%;
+  "Independent scores" column renamed and every vendor-run or competitor-run cell tagged; NEEDLE's 23-engine
+  standings and its 31 August deep-tail snapshot added; Keenable's edge reframed against Perplexity and Exa;
+  Context.dev, Keiro, Yandex, the SERP-scraper price ladder, Mistral and Cohere added; a practitioner paragraph
+  added; the dfpn section now leads with external data; citations repointed; small arithmetic fixed).
+- Final checks: no stale strings, all four tables have consistent column counts, headings in sentence case.
+- Deliverable: `reports/Search API landscape and benchmarks.md`, 15,890 words, about 100 inline citations, a
+  30-row benchmark table, a 31-row provider table, the Artificial Analysis and NEEDLE tables, and sections on
+  Keenable, Exa, Common Crawl, UVPs, methodology, open gaps and this repository.
+
+**The answer in brief**
+- Benchmarks: two families rank providers differently. Retrieval-only tests (SimpleQA, Elo-style list judging,
+  answer presence at k) are saturated or Wikipedia-shaped; agent-in-the-loop tests (BrowseComp, DeepSearchQA,
+  Artificial Analysis, Vals, OpenBenchmarks) still discriminate, but the agent model, tool budget, judge and
+  sample size move scores more than the index does. Only Artificial Analysis and Vals are independent and hold
+  the harness fixed, and they disagree on the winner.
+- Providers: three layers. Own crawl and index (Exa, Keenable, Brave, Perplexity, Mojeek, Yep, Octen, Ceramic,
+  Marginalia, Mwmbl, Kagi's Teclis), SERP wrappers (Serper, SerpApi, Bright Data, Oxylabs, DataForSEO, and the
+  official but closing Google and retired Bing APIs), and aggregation or post-processing layers whose index
+  source is undisclosed (Tavily, Linkup, Jina, Firecrawl, You.com, Nimble). Nearly all ship hosted MCP servers;
+  prices cluster at  (fast tiers),  to  (full),  to 6 (Exa Auto and Deep, Tavily) and 0 to 4
+  (platform-built-in tools), while all-in agent cost per task is dominated by model tokens.
+- Why Keenable and Exa score well: Exa documents its machinery (link-prediction embeddings, a custom binary-
+  quantized vector database, hybrid dense and sparse retrieval fused by rank, rerankers, full-page highlights)
+  and wins on queries per task; Keenable discloses little beyond an owned 100B-document index, per-task index
+  structures, 150 to 350 ms serving and a token classifier that shrinks responses by half, and its best
+  independent placement (Vals, first) rests on one model pairing without a significance test.
+- Versus Common Crawl: a monthly 2.16B-page sample chosen by host centrality with no inverted index, no ranking
+  signals, no rendering and no serving layer; it is about 2% of the pages the leaders claim, and none of them
+  says it uses it. The commercial value is in ranking, freshness, extraction and sub-second serving.
+- UVP: every vendor says "for AI agents"; the differentiation is in the second sentence (Exa semantic retrieval
+  and highlights, Keenable latency and an owned index, Brave independence and price, Perplexity freshness and
+  hybrid retrieval, Parallel accuracy per dollar, Tavily developer ergonomics, Linkup licensed content, Octen and
+  Ceramic cost, Kagi and Mojeek privacy).
+
+**What was not done**
+- Pushing to GitHub: every attempt returned 403 (no GitHub access to the repository for this session; the
+  connector can read but not write). All work is committed locally on `claude/nifty-wozniak-jvlqk6`.
+- Reddit, X, LinkedIn, the live NEEDLE site, Brave's status page and Search Arena 2026 were unreachable from this
+  environment; 13 of the 26 Artificial Analysis rows (including Tavily, Keenable and Linkup in October) are
+  hidden behind the page's interface and were not recovered; the README's `../benchmark/` directories are not
+  in this checkout, so the dfpn section relies on the README's descriptions.
+
+**Session totals**
+- Agents: 9 wave-1 researchers, 15 workflow agents in wave 2 (6 researchers, 6 skeptics, 3 verifiers), 1 report
+  writer (two passes), 1 reviewer. About 1,330 tool calls in the subagents.
+- Token totals across all transcripts (turns, output, cache-write, cache-read, input): TOTAL        286   1182531    6568069    32871118    7504   223.43   198.78
+- budget $240: $198.78 = 83% used at official prices ($223.43 = 93% with cache reads at $1/M)
