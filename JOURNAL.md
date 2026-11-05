@@ -92,3 +92,58 @@ Dollar figures are estimates; the list price of the serving model is noted where
 - Wave 2 should cover: NEEDLE's methodology and current leaderboard; the Vals Web Search Index; the current
   Artificial Analysis Search Index data (the page moved); Keenable crawl cadence and Common Crawl seeding;
   practitioner opinions on Keenable.
+
+## 2026-11-05 01:05 UTC. Wave 1, thread 2 back: Exa
+
+**Done**
+- Committed the final `exa.md` (seven sections; vendor, competitor and independent sources labelled). This thread
+  also exhausted its web-search budget before reaching HN threads and arXiv usage, so wave 2 will use narrower
+  briefs and direct page fetches.
+
+**Found: Exa**
+- Company: Metaphor Systems (2021, YC S21, Will Bryk and Jeff Wang), rebranded Exa 2024-01-25. Funding: $5M seed,
+  $17M Series A (July 2024, Lightspeed), $85M Series B at $700M (2025-09-03, Benchmark), $250M Series C at $2.2B
+  (2026-05-20, a16z). Vendor-reported: over $100M annualized revenue (2026-10-13), about 2B requests per month,
+  over 200k teams; Sacra estimated about $10M ARR in September 2025. Customers include Databricks, Cursor,
+  Notion AI, Cognition, HubSpot, OpenRouter.
+- Architecture (from Exa's engineering posts): own crawler (ExaSearchBot), custom parser, S3 and Lance storage,
+  an embedding model first trained on link prediction ("neural PageRank"), later fine-tuned on synthetic data; a
+  custom C++/Rust vector database (4096-d Matryoshka embeddings cut to 256-d, binary quantization, 100k clusters,
+  under 100 ms over billions of vectors, December 2024); BM25 served alongside; the April 2026 "Composing a Search
+  Engine" post shows dense ANN and a sparse inverted index fused with reciprocal rank fusion (k=60), then
+  relevance and authority rerankers, about 250 ms serving. GPUs: 80 A100s (2021) plus a 144-H200 cluster (2025).
+- Index claims over time: "billions" (March 2025), "tens of billions" (October 2025), 500B URLs tracked (May
+  2026), 80B pages and 1.4T URLs (August 2026), 100B pages served and 2T URLs tracked (October 2026), plus 400B
+  historical snapshots (Exa Snapshot, September 2026).
+- Modes: Auto (December 2024), Fast (July 2025), Exa 2.0 Fast/Auto/Deep (2025-10-10), Instant sub-200 ms
+  (February 2026), deep and deep-reasoning with output schemas (March 2026), Deep Max (April 2026), Exa Agent
+  (June 2026), Exa 3.0 (2026-10-19: Lite/Auto/Deep, larger embedding model, Dynamic Highlights GA claiming 95%
+  fewer tokens).
+- Pricing (November 2026): lite $4, auto $7 (raised from $5 in March 2026), deep $12, deep-reasoning $15 per 1K
+  searches; contents $1 per 1K pages per type; $10 free credits monthly; 10 QPS search.
+- Benchmarks. Independent, Artificial Analysis Search Index (equal mean of DeepSearchQA, BrowseComp-200 and
+  AA-Omniscience; GPT-5.6 Luna agent): at launch (2026-08-18) Exa auto 74, fast 68, Parallel advanced 75; as of
+  2026-10-19 Exa auto with dynamic highlights 80 (tied with Perplexity medium), Exa lite 79, Parallel advanced 75,
+  Brave 75, OpenAI 74, Firecrawl 73; Exa auto cost $53 per 1K tasks at 36.9 s per task. Competitor-run (Parallel,
+  2026-09-09, 50 BrowseComp questions): Parallel Advanced 74% ($399 per 1K), Perplexity 74%, Exa Auto 70% ($971,
+  highest cost), Tavily 66%; July 2026: Exa Instant 33.7% BrowseComp against Parallel Turbo 51%, SimpleQA 89.3%
+  against 91%; measured Exa Instant p50 335 to 361 ms against the advertised sub-200 ms. Perplexity's
+  search_evals shows Exa's Agent API far behind on BrowseComp (0.38 against 0.805). Vendor: Exa 3.0 BrowseComp
+  91.8%, DeepSearchQA 88.2%, WideSearch 56.1%, ATLAS 42.0% (harness unstated).
+- Exa's ATLAS post argues BrowseComp, WideSearch and DeepSearchQA barely measure search quality: 48% to 61% of
+  questions are answerable closed-book, and hiding 7 of 10 results retains 81% to 89% of the score, while the
+  search backend moves ATLAS scores by 16%.
+- Why strong: embeddings of long natural-language queries, full parsed page content and highlights instead of
+  snippets, compute-scalable rerankers, and fewer queries per task (7.6 against 9.5 to 15.4 for others in the
+  Artificial Analysis data). Weaknesses: the highest per-task cost in competitor runs, an advertised-versus-measured
+  latency gap, lite mode is cache-only, no EU data residency, and crawler blocking acknowledged by the CEO.
+- Common Crawl: no vendor or third-party source links Exa to Common Crawl; every primary description says own
+  crawl, parse and embed pipeline.
+
+**Spend**
+- See the tracker line below this entry's commit. Seven threads still running.
+
+**Next**
+- Wave 2 additions: Perplexity's search_evals repository (an open harness with cross-vendor numbers), Exa's ATLAS
+  benchmark, and the per-task cost data in the Artificial Analysis index.
+- Tracker: TOTAL         99    352923    1861342     9152277    2694    64.05    57.19 budget $240: 27% used (high estimate), 24% (low estimate) 
